@@ -1,4 +1,4 @@
-class Guests
+class Guest
 
   attr_reader :name, :wallet, :fav_song
 
