@@ -4,7 +4,7 @@ Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 
 require_relative('../songs')
 
-class TestSongs < Minitest::Test
+class TestSong < Minitest::Test
 
   def setup
       @Purple_Rain = Song.new("Purple Rain")

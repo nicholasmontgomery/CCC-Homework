@@ -13,12 +13,25 @@ class Rooms
        return @room_guests.count
     end
 
+    def song_count
+       return @song_playlist.count
+    end
+
     def check_in_guest(guest)
-      @room_guests.push(guest)
+      return if @room_guests.count >= @room_capacity 
+         @room_guests.push(guest)
     end
 
     def check_out_guest(guest)
       @room_guests.delete(guest)
+    end
+
+    def add_song_to_room(song)
+      @song_playlist.push(song)
+    end
+
+    def remove_song_from_room(song)
+      @song_playlist.delete(song)
     end
 
 end
