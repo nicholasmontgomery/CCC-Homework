@@ -27,35 +27,23 @@ class TestRooms < Minitest::Test
     assert_equal(5, @room2.room_capacity)
   end
 
-  # def test_room_has_no_guests
-  #   assert_equal([], @room3.room_guests)
-  # end
-  #
-  # def test_room_has_no_songs_on_playlist
-  # #   assert_equal([], @room3.song_playlist)
-  # end
+  def test_room_has_no_guests
+    assert_equal([], @room3.room_guests)
+  end
 
-  def test_can_add_guest
-    @room3.add_guest(@guest1)
+  def test_room_has_no_songs_on_playlist
+  #   assert_equal([], @room3.song_playlist)
+  end
+
+  def test_can_check_in_guest
+    @room3.check_in_guest(@guest1)
     assert_equal(1, @room3.guest_count)
   end
 
-  # def test_can_add_drinks
-  #   @pub.add_drink(@drink1)
-  #   assert_equal(1, @room3.guest_count)
-  # end
-
-  # def test_check_in_guest
-  #   assert_equal(1, @room1.check_in_guest(@guest1))
-  # end
-  #
-  # @pub.add_drink(@drink1)
-  # assert_equal(1, @pub.drink_count)
-
-  # def test_check_out_guest
-  #   @room2.check_in_guest(@guest1)
-  #   @room2.check_in_guest(@guest2)
-  #   @room2.check_in_guest(@guest3)
-  #   assert_equal(["Nick, Sarah"], @room2.check_out_guest(@guest2)
-
+  def test_can_check_out_guest
+    @room3.check_in_guest(@guest1)
+    @room3.check_out_guest(@guest1)
+    assert_equal(0, @room3.guest_count)
   end
+
+end

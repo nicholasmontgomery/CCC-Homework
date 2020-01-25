@@ -13,20 +13,12 @@ class Rooms
        return @room_guests.count
     end
 
-    def add_guest(guest)
+    def check_in_guest(guest)
       @room_guests.push(guest)
     end
 
-    # def check_in_guest(guest)
-    #   @guests.push(guest)
-    # end
-
-    # def check_out_guest(guest)
-    #   for room_guest in @room_guests
-    #     if room_guest == guest
-    #       @room_guests.delete(guest)
-    #     end
-    #   end
-    # end
+    def check_out_guest(guest)
+      @room_guests.delete(guest)
+    end
 
 end
