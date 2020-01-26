@@ -3,6 +3,7 @@ require('minitest/reporters')
 Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 
 require_relative('../guests')
+require_relative('../drink')
 
 class TestGuest < Minitest::Test
 
@@ -10,6 +11,9 @@ class TestGuest < Minitest::Test
       @Nick = Guest.new("Nick", 150, "Heroes")
       @Phil = Guest.new("Jupiter", 80, "Billy Jean")
       @Sarah = Guest.new("Mars", 100, "Bohemian Rhapsody")
+
+      @wine = Drink.new("Wine", 5)
+      @beer = Drink.new("Beer", 4)
   end
 
   def test_has_name
@@ -28,5 +32,9 @@ class TestGuest < Minitest::Test
     assert_equal(100, @Nick.take_money_from_wallet(50))
   end
 
-
+  def test_buy_drink
+    @Sarah.buy_drink(@wine)
+    assert_equal(95, @Sarah.wallet)
+    assert_equal([@wine], @Sarah.drinks_bought)
+  end
 end

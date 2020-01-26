@@ -22,6 +22,8 @@ class TestRooms < Minitest::Test
       @guest3 = Guest.new("Sarah", 100, "Bohemian Rhapsody")
 
       @all_guests = [@guest1, @guest2, @guest3]
+
+
   end
 
   def test_room_has_number
@@ -44,6 +46,7 @@ class TestRooms < Minitest::Test
     @room3.check_in_guest(@guest1)
     assert_equal(1, @room3.guest_count)
     assert_equal(145, @guest1.wallet)
+    assert_equal(5, @room3.room_till)
   end
 
   def test_can_check_out_guest

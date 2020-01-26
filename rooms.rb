@@ -1,6 +1,6 @@
 class Rooms
 
-  attr_reader :room_number, :room_capacity, :room_guests, :song_playlist
+  attr_reader :room_number, :room_capacity, :room_guests, :song_playlist, :room_price, :room_till
 
     def initialize(room_number, room_capacity)
       @room_number = room_number
@@ -8,6 +8,7 @@ class Rooms
       @room_guests = []
       @song_playlist = []
       @room_price = 5
+      @room_till = 0
     end
 
     def guest_count
@@ -23,6 +24,8 @@ class Rooms
       return if @room_price > guest.wallet
       @room_guests.push(guest)
       guest.take_money_from_wallet(@room_price)
+      # guest.wallet =- @room_price
+      @room_till += @room_price
       for song in @song_playlist
       return "Whoo!" if song.name == guest.fav_song
       end
@@ -39,6 +42,5 @@ class Rooms
     def remove_song_from_room(song)
       @song_playlist.delete(song)
     end
-
 
 end
