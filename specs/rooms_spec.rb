@@ -83,6 +83,4 @@ class TestRooms < Minitest::Test
     assert_equal("Whoo!", @room1.check_in_guest(@guest1))
   end
 
-# Rooms can keep track of the entry fees/spending of the guests - maybe add a bar tab/bar class?
-
 end
