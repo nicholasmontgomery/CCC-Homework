@@ -15,16 +15,16 @@ class TestRooms < Minitest::Test
 
       @Purple_Rain = Song.new("Purple Rain")
       @Like_a_Prayer = Song.new("Like a Prayer")
-      @Love_Shack = Song.new("Love Shack")
+      @Heroes = Song.new("Heroes")
 
       @guest1 = Guest.new("Nick", 150, "Heroes")
-      @guest2 = Guest.new("Barry", 80, "Billy Jean")
+      @guest2 = Guest.new("Barry", 4, "Billy Jean")
       @guest3 = Guest.new("Sarah", 100, "Bohemian Rhapsody")
 
       @all_guests = [@guest1, @guest2, @guest3]
   end
 
-  def test_room_has_name
+  def test_room_has_number
     assert_equal(1, @room1.room_number)
   end
 
@@ -43,6 +43,7 @@ class TestRooms < Minitest::Test
   def test_can_check_in_guest
     @room3.check_in_guest(@guest1)
     assert_equal(1, @room3.guest_count)
+    assert_equal(145, @guest1.wallet)
   end
 
   def test_can_check_out_guest
@@ -68,5 +69,17 @@ class TestRooms < Minitest::Test
     @room2.check_in_guest(@guest3)
     assert_equal(2, @room2.guest_count)
   end
+
+  def test_guest_does_not_have_enough_money
+    @room2.check_in_guest(@guest2)
+    assert_equal(0, @room2.guest_count)
+  end
+
+  def test_favourite_song_reaction
+    @room1.add_song_to_room(@Heroes)
+    assert_equal("Whoo!", @room1.check_in_guest(@guest1))
+  end
+
+# Rooms can keep track of the entry fees/spending of the guests - maybe add a bar tab/bar class?
 
 end

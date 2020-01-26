@@ -21,7 +21,12 @@ class TestGuest < Minitest::Test
   end
 
   def test_has_fav_song
-    assert_equal("Adele", @Sarah.fav_artist)
+    assert_equal("Bohemian Rhapsody", @Sarah.fav_song)
   end
+
+  def test_take_money_from_wallet
+    assert_equal(100, @Nick.take_money_from_wallet(50))
+  end
+
 
 end
